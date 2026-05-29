@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Carson Keppel | Marketing & Content Creator</title>
+<meta name="description" content="Carson Keppel is a marketing graduate and content creator specializing in video editing, design, and creative campaigns that grow brands and drive engagement." />
+
+<!-- ============================================================
+     EASY-EDIT NOTE FOR CARSON:
+     - Change any text by editing what's between the > and < tags.
+     - Swap an image by replacing the file in the /images folder
+       (keep the same filename) OR change the src="..." path.
+     - Update links (email, phone, LinkedIn, YouTube, resume) in the
+       CONTACT section near the bottom and in the nav.
+     - Colors live in the :root block right below. Change a hex code
+       once and it updates everywhere.
+   ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+  :root{
+    --charcoal:#222222;      /* main background */
+    --charcoal-2:#2c2c2c;    /* card / section alt */
+    --cream:#F5F0E4;         /* primary text / light areas */
+    --cream-dim:#cfcabb;     /* muted text */
+    --yellow:#FFE27A;        /* pastel yellow accent */
+    --yellow-soft:#fff2bd;
+    --maxw:1120px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--charcoal);
+    color:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;line-height:1.1;letter-spacing:-.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  section{padding:96px 24px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;}
+
+  .accent{color:var(--yellow);}
+  .eyebrow{
+    font-family:'Space Grotesk',sans-serif;
+    text-transform:uppercase;letter-spacing:.22em;
+    font-size:.78rem;color:var(--yellow);font-weight:600;margin-bottom:18px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;
+    background:rgba(34,34,34,0);
+    transition:background .35s var(--ease),padding .35s var(--ease),box-shadow .35s var(--ease);
+  }
+  nav.scrolled{background:rgba(28,28,28,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(245,240,228,.08);}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;}
+  .brand .dot{color:var(--yellow);}
+  .nav-links{display:flex;gap:30px;align-items:center;}
+  .nav-links a{font-size:.92rem;color:var(--cream-dim);transition:color .2s;}
+  .nav-links a:hover{color:var(--cream);}
+  .nav-links .btn-sm{
+    border:1px solid var(--yellow);color:var(--yellow);
+    padding:8px 16px;border-radius:999px;transition:all .25s var(--ease);
+  }
+  .nav-links .btn-sm:hover{background:var(--yellow);color:var(--charcoal);}
+  .menu-toggle{display:none;background:none;border:0;color:var(--cream);font-size:1.6rem;cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding:120px 24px 80px;position:relative;overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;width:620px;height:620px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,226,122,.18),transparent 65%);
+    top:-160px;right:-120px;pointer-events:none;animation:float 14s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(34px)}}
+  .hero .wrap{position:relative;z-index:2;}
+  .hero h1{font-size:clamp(2.7rem,8vw,5.6rem);font-weight:700;max-width:14ch;}
+  .hero h1 .line{display:block;overflow:hidden;}
+  .hero p.lead{
+    margin-top:26px;font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--cream-dim);max-width:54ch;
+  }
+  .hero-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;
+    padding:15px 28px;border-radius:999px;cursor:pointer;border:0;
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;
+  }
+  .btn-primary{background:var(--yellow);color:var(--charcoal);box-shadow:0 8px 30px rgba(255,226,122,.22);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(255,226,122,.34);}
+  .btn-ghost{border:1px solid rgba(245,240,228,.3);color:var(--cream);}
+  .btn-ghost:hover{border-color:var(--yellow);color:var(--yellow);transform:translateY(-3px);}
+  .scroll-hint{margin-top:64px;color:var(--cream-dim);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:12px;}
+  .scroll-hint .bar{width:42px;height:1px;background:var(--cream-dim);position:relative;overflow:hidden;}
+  .scroll-hint .bar::after{content:"";position:absolute;inset:0;background:var(--yellow);animation:slide 2.4s var(--ease) infinite;}
+  @keyframes slide{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- SECTION HEADING ---------- */
+  .sec-head{max-width:60ch;margin-bottom:54px;}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:700;}
+  .sec-head p{margin-top:16px;color:var(--cream-dim);font-size:1.08rem;}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--charcoal-2);}
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start;}
+  .about-grid p{color:var(--cream-dim);margin-bottom:18px;font-size:1.06rem;}
+  .about-grid p strong{color:var(--cream);font-weight:600;}
+  .facts{display:flex;flex-direction:column;gap:18px;}
+  .fact{
+    background:var(--charcoal);border:1px solid rgba(245,240,228,.08);
+    border-radius:16px;padding:22px 24px;transition:transform .3s var(--ease),border-color .3s;
+  }
+  .fact:hover{transform:translateY(-4px);border-color:rgba(255,226,122,.5);}
+  .fact .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.1rem;color:var(--yellow);}
+  .fact .lbl{color:var(--cream-dim);font-size:.95rem;margin-top:4px;}
+
+  /* ---------- PORTFOLIO ---------- */
+  .video-frame{
+    position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
+    border:1px solid rgba(245,240,228,.1);box-shadow:0 24px 70px rgba(0,0,0,.45);background:#000;
+  }
+  .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .video-caption{margin-top:18px;color:var(--cream-dim);font-size:1rem;}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;}
+  .card{
+    position:relative;border-radius:16px;overflow:hidden;background:var(--charcoal-2);
+    border:1px solid rgba(245,240,228,.08);cursor:pointer;
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+  }
+  .card img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform .6s var(--ease);}
+  .card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(0,0,0,.5);}
+  .card:hover img{transform:scale(1.06);}
+  .card .tag{
+    position:absolute;left:14px;bottom:14px;right:14px;z-index:2;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.95rem;
+    color:var(--cream);opacity:0;transform:translateY(8px);transition:all .35s var(--ease);
+  }
+  .card::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,rgba(0,0,0,.78));opacity:0;transition:opacity .35s;}
+  .card:hover::after{opacity:1;}
+  .card:hover .tag{opacity:1;transform:none;}
+
+  /* ---------- CASE STUDIES ---------- */
+  #cases{background:var(--charcoal-2);}
+  .cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .case{
+    background:var(--charcoal);border:1px solid rgba(245,240,228,.08);
+    border-radius:18px;padding:34px;transition:transform .3s var(--ease),border-color .3s;
+    display:flex;flex-direction:column;
+  }
+  .case:hover{transform:translateY(-5px);border-color:rgba(255,226,122,.5);}
+  .case .kicker{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);font-weight:600;}
+  .case h3{font-size:1.4rem;margin:12px 0 14px;font-weight:600;}
+  .case p{color:var(--cream-dim);font-size:1rem;flex-grow:1;}
+  .case .link{margin-top:20px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--yellow);display:inline-flex;gap:8px;align-items:center;transition:gap .25s;}
+  .case .link:hover{gap:14px;}
+
+  /* ---------- CONTACT ---------- */
+  #contact{text-align:center;}
+  #contact h2{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;max-width:18ch;margin:0 auto;}
+  #contact .sub{color:var(--cream-dim);font-size:1.15rem;margin:22px auto 40px;max-width:48ch;}
+  .contact-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-bottom:44px;}
+  .contact-rows{display:flex;flex-wrap:wrap;gap:14px 40px;justify-content:center;color:var(--cream-dim);font-size:1.02rem;}
+  .contact-rows a:hover{color:var(--yellow);}
+  .socials{display:flex;gap:14px;justify-content:center;margin-top:40px;}
+  .socials a{
+    width:46px;height:46px;border-radius:50%;border:1px solid rgba(245,240,228,.25);
+    display:flex;align-items:center;justify-content:center;transition:all .25s var(--ease);
+  }
+  .socials a:hover{background:var(--yellow);border-color:var(--yellow);color:var(--charcoal);transform:translateY(-4px);}
+  .socials svg{width:20px;height:20px;}
+
+  footer{padding:34px 24px;text-align:center;color:var(--cream-dim);font-size:.86rem;border-top:1px solid rgba(245,240,228,.08);}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{position:fixed;inset:0;z-index:200;background:rgba(15,15,15,.94);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out;}
+  .lightbox.open{display:flex;animation:fade .25s ease;}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .lightbox img{max-width:92vw;max-height:90vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);}
+  .lightbox .close{position:absolute;top:24px;right:30px;font-size:2.4rem;color:var(--cream);cursor:pointer;line-height:1;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:860px){
+    .nav-links{
+      position:fixed;top:0;right:0;height:100vh;width:74%;max-width:320px;
+      background:var(--charcoal-2);flex-direction:column;justify-content:center;gap:26px;
+      transform:translateX(100%);transition:transform .4s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.4);
+    }
+    .nav-links.open{transform:translateX(0);}
+    .menu-toggle{display:block;z-index:101;}
+    .about-grid{grid-template-columns:1fr;gap:36px;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .cases-grid{grid-template-columns:1fr;}
+    section{padding:72px 22px;}
+  }
+  @media(max-width:520px){
+    .gallery{grid-template-columns:1fr;}
+    .hero-cta{flex-direction:column;align-items:stretch;}
+    .btn{justify-content:center;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <a href="#top" class="brand">Carson Keppel<span class="dot">.</span></a>
+  <button class="menu-toggle" aria-label="Menu" id="menuBtn">&#9776;</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#cases">Campaigns</a>
+    <a href="#contact">Contact</a>
+    <a href="files/Carson_Keppel_Resume.pdf" class="btn-sm" target="_blank" rel="noopener">Resume</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow reveal">Marketing Graduate &middot; Content Creator</p>
+    <h1 class="reveal">Creative marketing that makes people <span class="accent">stop scrolling.</span></h1>
+    <p class="lead reveal">Hi, I'm Carson! I'm a recent marketing grad who's been making videos since I was a kid. I build content and campaigns that get brands noticed and get people engaged.</p>
+    <div class="hero-cta reveal">
+      <a href="#work" class="btn btn-primary">Look what I've built &rarr;</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+    <div class="scroll-hint reveal"><span class="bar"></span> Scroll to explore</div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">About me</p>
+      <h2>Down to earth, creative, and calm when it counts.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I graduated from <strong>Cal State San Marcos in May 2026</strong> with a degree in Business Administration, Marketing, finishing Summa Cum Laude with a 3.92 GPA. I did all of that while working 30+ hours a week and holding three leadership roles at once, so juggling a lot at full speed is kind of my thing!</p>
+        <p>What I love most is the creative side: finding fresh ways to get a brand in front of people and actually get them to care. I've been making and editing video since childhood, I'm comfortable in Premiere Pro and Canva, and I'm the type to figure out a new tool fast rather than wait around.</p>
+        <p>As president of my fraternity, <strong>Alpha Sigma Phi</strong>, I grew the chapter by 50%, directed our social media across Instagram and TikTok, and built a recruiting strategy around real human connection instead of a hard pitch. Outside of work, I play guitar and once listened to a new album every single day for two years, which probably tells you everything about how my curiosity runs.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><div class="num">3.92</div><div class="lbl">GPA &middot; Summa Cum Laude, 8x Dean's List</div></div>
+        <div class="fact"><div class="num">+50%</div><div class="lbl">Chapter growth as fraternity president</div></div>
+        <div class="fact"><div class="num">#4</div><div class="lbl">Recruitment class nationally out of ~180 chapters</div></div>
+        <div class="fact"><div class="num">3 roles</div><div class="lbl">Leadership positions held at once while working 30+ hrs/week</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK / PORTFOLIO ============ -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Featured work</p>
+      <h2>Video is where I live.</h2>
+      <p>Editing has been my favorite thing to do since I was a kid. Here's a piece I'm proud of.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="video-frame">
+        <iframe src="https://www.youtube-nocookie.com/embed/mFNKECTe5JU?start=308" title="Carson Keppel video editing sample" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="video-caption">A video editing sample showing pacing, cuts, and storytelling. <a href="https://www.youtube.com/watch?v=mFNKECTe5JU&t=308s" class="accent" target="_blank" rel="noopener">Watch on YouTube &rarr;</a></p>
+    </div>
+
+    <div class="sec-head reveal" style="margin-top:90px;">
+      <p class="eyebrow">Design</p>
+      <h2>Flyers, social posts, and brand pieces.</h2>
+      <p>A mix of Canva design and Photoshop work. Click any piece to view it full size.</p>
+    </div>
+
+    <div class="gallery">
+      <div class="card reveal" data-full="images/cosmic-view-records.png"><img src="images/cosmic-view-records.png" alt="Cosmic View Records flyer design" loading="lazy"><span class="tag">Cosmic View Records &middot; Event flyer</span></div>
+      <div class="card reveal" data-full="images/before-after-photoshop.png"><img src="images/before-after-photoshop.png" alt="Before and after Photoshop recolor of a poster" loading="lazy"><span class="tag">Photoshop &middot; Before / after recolor</span></div>
+      <div class="card reveal" data-full="images/instagram-post.png"><img src="images/instagram-post.png" alt="Promotional Instagram post design" loading="lazy"><span class="tag">Instagram &middot; Promo post</span></div>
+      <div class="card reveal" data-full="images/cocktail-menu.png"><img src="images/cocktail-menu.png" alt="Cocktail menu design" loading="lazy"><span class="tag">Print &middot; Cocktail menu</span></div>
+      <div class="card reveal" data-full="images/pride-itinerary.png"><img src="images/pride-itinerary.png" alt="World Pride itinerary planner design" loading="lazy"><span class="tag">Layout &middot; Itinerary planner</span></div>
+      <div class="card reveal" data-full="images/design-sample-1.png"><img src="images/design-sample-1.png" alt="Logo and badge design set" loading="lazy"><span class="tag">Branding &middot; Logo set</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASE STUDIES / CAMPAIGNS ============ -->
+<section id="cases">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Campaigns &amp; case studies</p>
+      <h2>The strategy behind the work.</h2>
+      <p>Where creative meets a plan. A few projects where I helped figure out the why, not just the what.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case reveal">
+        <span class="kicker">Digital Marketing</span>
+        <h3>Surfside Campaign Strategy</h3>
+        <p>A full digital marketing campaign for a real brand: current-state audit, influencer recommendations, budget reallocation, new email campaigns, and a platform expansion plan.</p>
+        <a class="link" href="files/Surfside_Digital_Marketing_Campaign.pdf" target="_blank" rel="noopener">View the proposal &rarr;</a>
+      </div>
+      <div class="case reveal">
+        <span class="kicker">Growth &amp; Social</span>
+        <h3>Alpha Sigma Phi Growth Campaign</h3>
+        <p>Grew the chapter 50% as president by pioneering a cold-outreach recruiting strategy built on genuine connection, and directing social content that reached tens of thousands of views organically.</p>
+        <a class="link" href="#contact">Ask me about it &rarr;</a>
+      </div>
+      <div class="case reveal">
+        <span class="kicker">Full Portfolio</span>
+        <h3>Complete Portfolio Deck</h3>
+        <p>The full collection of my marketing and design work in one place, including projects, samples, and campaign breakdowns.</p>
+        <a class="link" href="files/Carson_Keppel_Portfolio.pdf" target="_blank" rel="noopener">Open the deck &rarr;</a>
+      </div>
+      <div class="case reveal">
+        <span class="kicker">Toolkit</span>
+        <h3>What I bring to a team</h3>
+        <p>Premiere Pro and Canva for content, Photoshop for design, plus HubSpot and Google Ads certifications. Add near-perfect reliability and composure under real pressure, and you've got someone ready on day one.</p>
+        <a class="link" href="files/Carson_Keppel_Resume.pdf" target="_blank" rel="noopener">Download my resume &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap reveal">
+    <p class="eyebrow">Let's talk</p>
+    <h2>Like what you see? Let's make something.</h2>
+    <p class="sub">I'm looking for entry-level marketing and social media roles, and I'd love to hear from you. Reach out anytime!</p>
+    <div class="contact-actions">
+      <a href="mailto:carsonbkeppel@gmail.com" class="btn btn-primary">Email me &rarr;</a>
+      <a href="files/Carson_Keppel_Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download resume</a>
+    </div>
+    <div class="contact-rows">
+      <a href="mailto:carsonbkeppel@gmail.com">carsonbkeppel@gmail.com</a>
+      <a href="tel:+19167495271">(916) 749-5271</a>
+    </div>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/carsonkeppel" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.07c.63-1.2 2.17-2.46 4.47-2.46C21.4 7.74 24 10 24 14.5V24h-5v-8.4c0-2-.04-4.57-2.78-4.57-2.79 0-3.22 2.18-3.22 4.43V24h-5V8z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/watch?v=mFNKECTe5JU" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.5 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+      </a>
+      <a href="mailto:carsonbkeppel@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> Carson Keppel &middot; Designed and built to show what I can do.
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox"><span class="close">&times;</span><img src="" alt="Enlarged portfolio piece" id="lightboxImg"></div>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // nav background on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+  // mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el,i) => {
+    el.style.transitionDelay = (i % 3 * 0.08) + 's';
+    io.observe(el);
+  });
+
+  // lightbox
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => { lbImg.src = card.dataset.full; lb.classList.add('open'); });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('open'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+</script>
+</body>
+</html>
