@@ -8,9 +8,11 @@
 
 <!-- ============================================================
      EASY-EDIT NOTE FOR CARSON:
+     - All files (this page, images, PDFs) live together in ONE folder,
+       no subfolders. That keeps GitHub uploads simple.
      - Change any text by editing what's between the > and < tags.
-     - Swap an image by replacing the file in the /images folder
-       (keep the same filename) OR change the src="..." path.
+     - Swap an image by replacing the file (keep the same filename)
+       OR change the src="..." path.
      - Update links (email, phone, LinkedIn, YouTube, resume) in the
        CONTACT section near the bottom and in the nav.
      - Colors live in the :root block right below. Change a hex code
@@ -133,6 +135,18 @@
   .fact:hover{transform:translateY(-4px);border-color:rgba(255,226,122,.5);}
   .fact .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:2.1rem;color:var(--yellow);}
   .fact .lbl{color:var(--cream-dim);font-size:.95rem;margin-top:4px;}
+  .portrait{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;margin-bottom:26px;
+    border:1px solid rgba(245,240,228,.1);box-shadow:0 18px 50px rgba(0,0,0,.4);background:var(--charcoal);}
+  .photo-ph{display:flex;align-items:center;justify-content:center;text-align:center;
+    color:var(--cream-dim);font-size:.92rem;line-height:1.5;padding:24px;
+    border:1px dashed rgba(255,226,122,.4);background:rgba(255,226,122,.04);}
+  .innout{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center;
+    margin-top:64px;padding-top:54px;border-top:1px solid rgba(245,240,228,.1);}
+  .innout-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;
+    border:1px solid rgba(245,240,228,.1);box-shadow:0 18px 50px rgba(0,0,0,.4);background:var(--charcoal);}
+  .innout-text h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:600;margin:6px 0 16px;}
+  .innout-text p{color:var(--cream-dim);margin-bottom:16px;font-size:1.06rem;}
+  .innout-text p strong{color:var(--cream);font-weight:600;}
 
   /* ---------- PORTFOLIO ---------- */
   .video-frame{
@@ -209,6 +223,9 @@
     .nav-links.open{transform:translateX(0);}
     .menu-toggle{display:block;z-index:101;}
     .about-grid{grid-template-columns:1fr;gap:36px;}
+    .innout{grid-template-columns:1fr;gap:28px;}
+    .portrait{max-width:340px;}
+    .innout-photo{max-width:340px;}
     .gallery{grid-template-columns:repeat(2,1fr);}
     .cases-grid{grid-template-columns:1fr;}
     section{padding:72px 22px;}
@@ -235,7 +252,7 @@
     <a href="#work">Work</a>
     <a href="#cases">Campaigns</a>
     <a href="#contact">Contact</a>
-    <a href="files/Carson_Keppel_Resume.pdf" class="btn-sm" target="_blank" rel="noopener">Resume</a>
+    <a href="Carson_Keppel_Resume.pdf" class="btn-sm" target="_blank" rel="noopener">Resume</a>
   </div>
 </nav>
 
@@ -263,6 +280,8 @@
     </div>
     <div class="about-grid">
       <div class="reveal">
+        <!-- PORTRAIT PHOTO: save your professional photo as carson-portrait.jpg in this folder. Until then this shows a friendly placeholder. -->
+        <img class="portrait" src="carson-portrait.jpg" alt="Carson Keppel" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;portrait photo-ph&quot;&gt;Add a photo of yourself here: save it as carson-portrait.jpg&lt;/div&gt;'">
         <p>I graduated from <strong>Cal State San Marcos in May 2026</strong> with a degree in Business Administration, Marketing, finishing Summa Cum Laude with a 3.92 GPA. I did all of that while working 30+ hours a week and holding three leadership roles at once, so juggling a lot at full speed is kind of my thing!</p>
         <p>What I love most is the creative side: finding fresh ways to get a brand in front of people and actually get them to care. I've been making and editing video since childhood, I'm comfortable in Premiere Pro and Canva, and I'm the type to figure out a new tool fast rather than wait around.</p>
         <p>As president of my fraternity, <strong>Alpha Sigma Phi</strong>, I grew the chapter by 50%, directed our social media across Instagram and TikTok, and built a recruiting strategy around real human connection instead of a hard pitch. Outside of work, I play guitar and once listened to a new album every single day for two years, which probably tells you everything about how my curiosity runs.</p>
@@ -272,6 +291,18 @@
         <div class="fact"><div class="num">+50%</div><div class="lbl">Chapter growth as fraternity president</div></div>
         <div class="fact"><div class="num">#4</div><div class="lbl">Recruitment class nationally out of ~180 chapters</div></div>
         <div class="fact"><div class="num">3 roles</div><div class="lbl">Leadership positions held at once while working 30+ hrs/week</div></div>
+      </div>
+    </div>
+
+    <!-- IN-N-OUT HIGHLIGHT -->
+    <div class="innout reveal">
+      <!-- CANDID PHOTO: save your candid photo as carson-candid.jpg in this folder. Until then this shows a placeholder. -->
+      <img class="innout-photo" src="carson-candid.jpg" alt="Carson Keppel" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;innout-photo photo-ph&quot;&gt;Add a candid photo here: save it as carson-candid.jpg&lt;/div&gt;'">
+      <div class="innout-text">
+        <p class="eyebrow">Where my work ethic comes from</p>
+        <h3>Five years at In-N-Out taught me how to perform under pressure.</h3>
+        <p>I worked my way up to a <strong>Level 6 cook</strong>, the position that sets the pace and quality for the entire store, earning six promotions in about two years. On a busy night that meant turning out roughly 200 orders in a 30-minute stretch, often short-staffed, without letting quality slip. I also trained new associates across multiple stations.</p>
+        <p>It also built habits I carry everywhere: two callouts in five years of work, a Hardest Worker Award, and a customer-service mindset of fixing the problem fast and leaving people happier than they came in. That reliability and calm is exactly what I bring to a marketing team.</p>
       </div>
     </div>
   </div>
@@ -300,12 +331,12 @@
     </div>
 
     <div class="gallery">
-      <div class="card reveal" data-full="images/cosmic-view-records.png"><img src="images/cosmic-view-records.png" alt="Cosmic View Records flyer design" loading="lazy"><span class="tag">Cosmic View Records &middot; Event flyer</span></div>
-      <div class="card reveal" data-full="images/before-after-photoshop.png"><img src="images/before-after-photoshop.png" alt="Before and after Photoshop recolor of a poster" loading="lazy"><span class="tag">Photoshop &middot; Before / after recolor</span></div>
-      <div class="card reveal" data-full="images/instagram-post.png"><img src="images/instagram-post.png" alt="Promotional Instagram post design" loading="lazy"><span class="tag">Instagram &middot; Promo post</span></div>
-      <div class="card reveal" data-full="images/cocktail-menu.png"><img src="images/cocktail-menu.png" alt="Cocktail menu design" loading="lazy"><span class="tag">Print &middot; Cocktail menu</span></div>
-      <div class="card reveal" data-full="images/pride-itinerary.png"><img src="images/pride-itinerary.png" alt="World Pride itinerary planner design" loading="lazy"><span class="tag">Layout &middot; Itinerary planner</span></div>
-      <div class="card reveal" data-full="images/design-sample-1.png"><img src="images/design-sample-1.png" alt="Logo and badge design set" loading="lazy"><span class="tag">Branding &middot; Logo set</span></div>
+      <div class="card reveal" data-full="cosmic-view-records.png"><img src="cosmic-view-records.png" alt="Cosmic View Records flyer design" loading="lazy"><span class="tag">Cosmic View Records &middot; Event flyer</span></div>
+      <div class="card reveal" data-full="before-after-photoshop.png"><img src="before-after-photoshop.png" alt="Before and after Photoshop recolor of a poster" loading="lazy"><span class="tag">Photoshop &middot; Before / after recolor</span></div>
+      <div class="card reveal" data-full="instagram-post.png"><img src="instagram-post.png" alt="Promotional Instagram post design" loading="lazy"><span class="tag">Instagram &middot; Promo post</span></div>
+      <div class="card reveal" data-full="cocktail-menu.png"><img src="cocktail-menu.png" alt="Cocktail menu design" loading="lazy"><span class="tag">Print &middot; Cocktail menu</span></div>
+      <div class="card reveal" data-full="pride-itinerary.png"><img src="pride-itinerary.png" alt="World Pride itinerary planner design" loading="lazy"><span class="tag">Layout &middot; Itinerary planner</span></div>
+      <div class="card reveal" data-full="design-sample-1.png"><img src="design-sample-1.png" alt="Logo and badge design set" loading="lazy"><span class="tag">Branding &middot; Logo set</span></div>
     </div>
   </div>
 </section>
@@ -323,7 +354,7 @@
         <span class="kicker">Digital Marketing</span>
         <h3>Surfside Campaign Strategy</h3>
         <p>A full digital marketing campaign for a real brand: current-state audit, influencer recommendations, budget reallocation, new email campaigns, and a platform expansion plan.</p>
-        <a class="link" href="files/Surfside_Digital_Marketing_Campaign.pdf" target="_blank" rel="noopener">View the proposal &rarr;</a>
+        <a class="link" href="Surfside_Digital_Marketing_Campaign.pdf" target="_blank" rel="noopener">View the proposal &rarr;</a>
       </div>
       <div class="case reveal">
         <span class="kicker">Growth &amp; Social</span>
@@ -335,13 +366,13 @@
         <span class="kicker">Full Portfolio</span>
         <h3>Complete Portfolio Deck</h3>
         <p>The full collection of my marketing and design work in one place, including projects, samples, and campaign breakdowns.</p>
-        <a class="link" href="files/Carson_Keppel_Portfolio.pdf" target="_blank" rel="noopener">Open the deck &rarr;</a>
+        <a class="link" href="Carson_Keppel_Portfolio.pdf" target="_blank" rel="noopener">Open the deck &rarr;</a>
       </div>
       <div class="case reveal">
         <span class="kicker">Toolkit</span>
         <h3>What I bring to a team</h3>
         <p>Premiere Pro and Canva for content, Photoshop for design, plus HubSpot and Google Ads certifications. Add near-perfect reliability and composure under real pressure, and you've got someone ready on day one.</p>
-        <a class="link" href="files/Carson_Keppel_Resume.pdf" target="_blank" rel="noopener">Download my resume &rarr;</a>
+        <a class="link" href="Carson_Keppel_Resume.pdf" target="_blank" rel="noopener">Download my resume &rarr;</a>
       </div>
     </div>
   </div>
@@ -355,7 +386,7 @@
     <p class="sub">I'm looking for entry-level marketing and social media roles, and I'd love to hear from you. Reach out anytime!</p>
     <div class="contact-actions">
       <a href="mailto:carsonbkeppel@gmail.com" class="btn btn-primary">Email me &rarr;</a>
-      <a href="files/Carson_Keppel_Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download resume</a>
+      <a href="Carson_Keppel_Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">Download resume</a>
     </div>
     <div class="contact-rows">
       <a href="mailto:carsonbkeppel@gmail.com">carsonbkeppel@gmail.com</a>
