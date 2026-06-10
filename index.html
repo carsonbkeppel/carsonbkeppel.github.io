@@ -199,6 +199,37 @@
   .case .link{margin-top:20px;font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--yellow);display:inline-flex;gap:8px;align-items:center;transition:gap .25s;}
   .case .link:hover{gap:14px;}
 
+  /* ---------- TOOLS ---------- */
+  .tools-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(176px,1fr));gap:16px;
+  }
+  .tool{
+    position:relative;width:100%;min-height:158px;cursor:pointer;
+    background:var(--charcoal-2);border:1px solid rgba(245,240,228,.08);
+    border-radius:16px;padding:0;color:var(--cream);font-family:inherit;
+    overflow:hidden;transition:transform .3s var(--ease),border-color .3s var(--ease);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .tool:hover{transform:translateY(-4px);border-color:rgba(255,226,122,.5);}
+  .tool:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
+  .tool-face,.tool-desc{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;padding:18px;
+    transition:opacity .3s var(--ease),transform .3s var(--ease);
+  }
+  .tool-icon{width:42px;height:42px;color:var(--yellow);transition:color .3s var(--ease);}
+  .tool-icon svg{width:100%;height:100%;display:block;}
+  .tool-name{
+    margin-top:14px;font-family:'Space Grotesk',sans-serif;font-weight:600;
+    font-size:.96rem;letter-spacing:-.01em;color:var(--yellow);
+  }
+  .tool-desc{opacity:0;transform:scale(.96);pointer-events:none;
+    font-size:.84rem;line-height:1.5;color:var(--cream);
+    background:var(--charcoal-2);}
+  .tool.open{border-color:var(--yellow);}
+  .tool.open .tool-face{opacity:0;transform:scale(1.04);}
+  .tool.open .tool-desc{opacity:1;transform:none;}
+
   /* ---------- CONTACT ---------- */
   #contact{text-align:center;}
   #contact h2{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;max-width:18ch;margin:0 auto;}
@@ -260,6 +291,7 @@
     <a href="#about">About</a>
     <a href="#work">Work</a>
     <a href="#cases">Campaigns</a>
+    <a href="#tools">Tools</a>
     <a href="#contact">Contact</a>
     <a href="Carson_Keppel_Resume.pdf" class="btn-sm" target="_blank" rel="noopener">Resume</a>
   </div>
@@ -313,6 +345,105 @@
         <p>I worked my way up to a <strong>Level 6 cook</strong>, the position that sets the pace and quality for the entire store, earning five promotions over the course of two years. On a busy night that meant turning out upwards of 200 or more burgers in a 30-minute period, often short-staffed, without sacrificing quality. I also trained fellow associates across multiple stations, directly assisting in their promotion(s).</p>
         <p>It also developed habits I try to carry everywhere, be it nearly perfect attendance in five years of work (both In-N-Out and my former job), a Hardest Worker Award, and a customer-service mindset of leaving people happier than they were when they came in. </p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS ============ -->
+<!-- EDIT NOTE: Each tool is a <button class="tool">. The icon is the inline <svg>.
+     The tool name is in <span class="tool-name">. The one-sentence blurb that appears
+     on click is in <span class="tool-desc">. Edit the words inside those tags to update.
+     To use a real brand logo image instead of the drawn icon, replace the <svg>...</svg>
+     with <img src="yourlogo.png" alt="Tool name"> and upload that image to the repo. -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">My toolkit</p>
+      <h2>Software, applications, and data tracking.</h2>
+      <p>Tap any tool.</p>
+    </div>
+    <div class="tools-grid reveal">
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7.4" height="7.4" rx="1.2"/><rect x="13.1" y="3.5" width="7.4" height="7.4" rx="1.2"/><rect x="3.5" y="13.1" width="7.4" height="7.4" rx="1.2"/><rect x="13.1" y="13.1" width="7.4" height="7.4" rx="1.2"/></svg></span>
+          <span class="tool-name">Microsoft Office</span>
+        </span>
+        <span class="tool-desc">I'm in Word, Excel, and PowerPoint pretty much every day.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M15.4 9.2a4.2 4.2 0 1 0 .3 5.4"/></svg></span>
+          <span class="tool-name">Canva</span>
+        </span>
+        <span class="tool-desc">I make most of my graphics, flyers, and slides here.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="4.5"/><text x="12" y="15.6" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="8.4" font-weight="700" fill="currentColor" stroke="none">Pr</text></svg></span>
+          <span class="tool-name">Premiere Pro</span>
+        </span>
+        <span class="tool-desc">I've been editing videos in Premiere since I was a kid.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="4.5"/><text x="12" y="15.6" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="8.4" font-weight="700" fill="currentColor" stroke="none">Ps</text></svg></span>
+          <span class="tool-name">Photoshop</span>
+        </span>
+        <span class="tool-desc">I use it to touch up photos and fix up images.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="4.5"/><text x="12" y="15.6" text-anchor="middle" font-family="'Space Grotesk',sans-serif" font-size="8.4" font-weight="700" fill="currentColor" stroke="none">Ae</text></svg></span>
+          <span class="tool-name">After Effects</span>
+        </span>
+        <span class="tool-desc">This is where I add motion and effects to my videos.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="tool-name">Instagram</span>
+        </span>
+        <span class="tool-desc">I ran my fraternity's page, and some posts hit tens of thousands of views.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="14.5"/><line x1="12" y1="20" x2="12" y2="10.5"/><line x1="18" y1="20" x2="18" y2="6.5"/><circle cx="18" cy="4" r="1.4" fill="currentColor" stroke="none"/></svg></span>
+          <span class="tool-name">Google Analytics</span>
+        </span>
+        <span class="tool-desc">I'm certified, and I run it on this site to see how people find me.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8.4 12c0-2 1.3-3.5 3-3.5 2.5 0 3.6 7 6.2 7 1.8 0 3-1.5 3-3.5s-1.2-3.5-3-3.5c-2.6 0-3.7 7-6.2 7-1.7 0-3-1.5-3-3.5z"/></svg></span>
+          <span class="tool-name">Meta Business Suite</span>
+        </span>
+        <span class="tool-desc">I learned to schedule and manage posts here in my marketing classes.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11.5" cy="13.5" r="4"/><circle cx="11.5" cy="4.6" r="1.9"/><line x1="11.5" y1="6.5" x2="11.5" y2="9.5"/><circle cx="18.4" cy="8.4" r="1.7"/><line x1="14.9" y1="11" x2="17.1" y2="9.7"/></svg></span>
+          <span class="tool-name">HubSpot</span>
+        </span>
+        <span class="tool-desc">I'm certified in HubSpot's digital marketing and inbound basics.</span>
+      </button>
+
+      <button class="tool" type="button" aria-expanded="false">
+        <span class="tool-face">
+          <span class="tool-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="12" y1="4" x2="12" y2="20"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="6.3" y1="6.3" x2="17.7" y2="17.7"/><line x1="17.7" y1="6.3" x2="6.3" y2="17.7"/></svg></span>
+          <span class="tool-name">Claude</span>
+        </span>
+        <span class="tool-desc">I use Claude every day to research, write, and get things done faster.</span>
+      </button>
+
     </div>
   </div>
 </section>
@@ -452,6 +583,14 @@
   });
   lb.addEventListener('click', () => lb.classList.remove('open'));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('open'); });
+
+  // tools: click a tile to reveal/hide its description
+  document.querySelectorAll('.tool').forEach(tool => {
+    tool.addEventListener('click', () => {
+      const open = tool.classList.toggle('open');
+      tool.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
 </script>
 </body>
 </html>
