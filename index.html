@@ -101,6 +101,9 @@
   }
   @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(34px)}}
   .hero .wrap{position:relative;z-index:2;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .hero-portrait{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 22%;
+    border-radius:22px;border:1px solid rgba(245,240,228,.12);box-shadow:0 26px 70px rgba(0,0,0,.5);background:var(--charcoal-2);}
   .hero h1{font-size:clamp(2.7rem,8vw,5.6rem);font-weight:700;max-width:14ch;}
   .hero h1 .line{display:block;overflow:hidden;}
   .hero p.lead{
@@ -188,11 +191,21 @@
   #cases{background:var(--charcoal-2);}
   .cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
   .case{
+    position:relative;overflow:hidden;
     background:var(--charcoal);border:1px solid rgba(245,240,228,.08);
     border-radius:18px;padding:34px;transition:transform .3s var(--ease),border-color .3s;
     display:flex;flex-direction:column;
   }
   .case:hover{transform:translateY(-5px);border-color:rgba(255,226,122,.5);}
+  /* Blurred project background image. Drop an image with the filename in each
+     card's style below into this folder and it auto-applies. Missing = no image. */
+  .case-bg{
+    position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;
+    filter:blur(9px);opacity:.26;transform:scale(1.12);pointer-events:none;
+    transition:opacity .3s var(--ease);
+  }
+  .case:hover .case-bg{opacity:.36;}
+  .case .kicker,.case h3,.case p,.case .link{position:relative;z-index:1;}
   .case .kicker{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow);font-weight:600;}
   .case h3{font-size:1.4rem;margin:12px 0 14px;font-weight:600;}
   .case p{color:var(--cream-dim);font-size:1rem;flex-grow:1;}
@@ -254,8 +267,37 @@
   .lightbox img{max-width:92vw;max-height:90vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);}
   .lightbox .close{position:absolute;top:24px;right:30px;font-size:2.4rem;color:var(--cream);cursor:pointer;line-height:1;}
 
+  /* ---------- VIDEO GRID (side by side) ---------- */
+  .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .video-col .video-caption{margin-top:14px;}
+
+  /* ---------- CERTIFICATIONS ---------- */
+  #certs{background:var(--charcoal-2);}
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;}
+  .cert{
+    display:flex;align-items:center;gap:14px;
+    background:var(--charcoal);border:1px solid rgba(245,240,228,.08);
+    border-radius:16px;padding:18px 20px;
+    transition:transform .3s var(--ease),border-color .3s var(--ease);
+  }
+  .cert:hover{transform:translateY(-4px);border-color:rgba(255,226,122,.5);}
+  .cert .cert-icon{width:26px;height:26px;color:var(--yellow);flex-shrink:0;}
+  .cert .cert-icon svg{width:100%;height:100%;display:block;}
+  .cert .cert-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:.94rem;color:var(--cream);line-height:1.3;}
+
+  /* ---------- STANDALONE IN-N-OUT SECTION ---------- */
+  #grind{background:var(--charcoal);border-top:1px solid rgba(245,240,228,.08);}
+  #grind .innout{margin-top:0;padding-top:0;border-top:0;}
+
+  /* ---------- SECTION CTA ---------- */
+  .section-cta{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:52px;}
+
   /* ---------- RESPONSIVE ---------- */
   @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;}
+    .hero-copy{order:2;}
+    .hero-portrait-wrap{order:1;max-width:300px;margin:0 auto;}
+    .video-grid{grid-template-columns:1fr;}
     .nav-links{
       position:fixed;top:0;right:0;height:100vh;width:74%;max-width:320px;
       background:var(--charcoal-2);flex-direction:column;justify-content:center;gap:26px;
@@ -289,9 +331,10 @@
   <button class="menu-toggle" aria-label="Menu" id="menuBtn">&#9776;</button>
   <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
+    <a href="#tools">Tools</a>
+    <a href="#certs">Certifications</a>
     <a href="#work">Work</a>
     <a href="#cases">Campaigns</a>
-    <a href="#tools">Tools</a>
     <a href="#contact">Contact</a>
     <a href="Carson_Keppel_Resume.pdf" class="btn-sm" target="_blank" rel="noopener">Resume</a>
   </div>
@@ -301,14 +344,21 @@
 <header class="hero" id="top">
   <div class="hero-glow"></div>
   <div class="wrap">
-    <p class="eyebrow reveal">Marketing Graduate &middot; Content Creator</p>
-    <h1 class="reveal">Carson <span class="accent">Keppel.</span></h1>
-    <p class="lead reveal">Hi, I'm Carson! I'm a recent marketing graduate from CSUSM in search of a marketing position.</p>
-    <div class="hero-cta reveal">
-      <a href="#work" class="btn btn-primary">Look what I've built &rarr;</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Marketing Graduate &middot; Content Creator</p>
+        <h1 class="reveal">Carson <span class="accent">Keppel.</span></h1>
+        <p class="lead reveal">Hi, I'm Carson! I'm a recent marketing graduate from CSUSM in search of a marketing position.</p>
+        <div class="hero-cta reveal">
+          <a href="#work" class="btn btn-primary">Look what I've built &rarr;</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+        <div class="scroll-hint reveal"><span class="bar"></span> Scroll to explore</div>
+      </div>
+      <div class="hero-portrait-wrap reveal">
+        <img class="hero-portrait" src="carson-portrait.jpg" alt="Carson Keppel" loading="eager">
+      </div>
     </div>
-    <div class="scroll-hint reveal"><span class="bar"></span> Scroll to explore</div>
   </div>
 </header>
 
@@ -320,8 +370,8 @@
       <h2>I do everything to the best of my ability.</h2>
     </div>
     <div class="about-top reveal">
-      <!-- PORTRAIT PHOTO: save your professional photo as carson-portrait.jpg in this folder. Until then this shows a friendly placeholder. -->
-      <img class="portrait" src="carson-portrait.jpg" alt="Carson Keppel" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;portrait photo-ph&quot;&gt;Add a photo of yourself here: save it as carson-portrait.jpg&lt;/div&gt;'">
+      <!-- ABOUT PHOTO: graduation photo. Save it as carson-graduation.jpg in this folder. Until then this shows a friendly placeholder. -->
+      <img class="portrait" src="carson-graduation.jpg" alt="Carson Keppel at graduation" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;portrait photo-ph&quot;&gt;Add your graduation photo here: save it as carson-graduation.jpg&lt;/div&gt;'">
       <div class="about-bio">
         <p>I graduated from Cal State San Marcos in May 2026 with a degree in <strong>Business Administration, Marketing</strong>, finishing <strong>Summa Cum Laude with a 3.92 GPA.</strong> I did all of that while <strong>working 30+ hours a week and holding three extracurricular leadership roles at once.</strong></p>
         <p>What I love most, however, is the creative side. I love finding new ways to get a brand in front of people and really capture their attention. I've been making and editing fun videos since childhood, I'm <strong>fluent in Premiere Pro and Canva,</strong> and I'm quick to learn new tools depending on the situation.</p>
@@ -335,16 +385,8 @@
       <div class="fact"><div class="num">3 roles</div><div class="lbl">Leadership positions held at once while working 30+ hrs/week</div></div>
     </div>
 
-    <!-- IN-N-OUT HIGHLIGHT -->
-    <div class="innout reveal">
-      <!-- IN-N-OUT PHOTO: save your In-N-Out photo as carson-candid.jpg in this folder. Until then this shows a placeholder. -->
-      <img class="innout-photo" src="carson-candid.jpg" alt="Carson at In-N-Out" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;innout-photo photo-ph&quot;&gt;Add your In-N-Out photo here: save it as carson-candid.jpg&lt;/div&gt;'">
-      <div class="innout-text">
-        <p class="eyebrow">Where my work ethic comes from</p>
-        <h3>Three years at In-N-Out taught me how to perform under pressure.</h3>
-        <p>I worked my way up to a <strong>Level 6 cook</strong>, the position that sets the pace and quality for the entire store, earning five promotions over the course of two years. On a busy night that meant turning out upwards of 200 or more burgers in a 30-minute period, often short-staffed, without sacrificing quality. I also trained fellow associates across multiple stations, directly assisting in their promotion(s).</p>
-        <p>It also developed habits I try to carry everywhere, be it nearly perfect attendance in five years of work (both In-N-Out and my former job), a Hardest Worker Award, and a customer-service mindset of leaving people happier than they were when they came in. </p>
-      </div>
+    <div class="section-cta reveal">
+      <a href="#work" class="btn btn-primary">See what I've made &rarr;</a>
     </div>
   </div>
 </section>
@@ -448,20 +490,59 @@
   </div>
 </section>
 
+<!-- ============ CERTIFICATIONS ============ -->
+<!-- EDIT NOTE: Each certification is a <div class="cert"> with an award icon and a
+     <span class="cert-name">. Add or remove a cert by copying a whole block. -->
+<section id="certs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Credentials</p>
+      <h2>Certified, and always adding more.</h2>
+      <p>The certifications behind the work.</p>
+    </div>
+    <div class="cert-grid reveal">
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Adobe Marketing Specialist Professional</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Google Analytics (GA4)</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Google Ads Search</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Google AI-Powered Shopping Ads</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">HubSpot Digital Marketing</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">HubSpot Email Marketing</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Digital Marketing Simulation (Stukent)</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Social Media Marketing Simulation (Stukent)</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Canva Essentials</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Claude 101 (Anthropic)</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Claude Code 101 (Anthropic)</span></div>
+      <div class="cert"><span class="cert-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.5 6.5 21l5.5-3 5.5 3-1.7-7.5"/></svg></span><span class="cert-name">Intro to Claude Cowork (Anthropic)</span></div>
+    </div>
+    <div class="section-cta reveal">
+      <a href="#work" class="btn btn-ghost">See it in action &rarr;</a>
+      <a href="Carson_Keppel_Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener">View my resume &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WORK / PORTFOLIO ============ -->
 <section id="work">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Featured work</p>
       <h2>I've loved creating videos since I was a kid.</h2>
-      <p>Here's a piece I'm proud of.</p>
+      <p>Here are a couple pieces i'm proud of.</p>
     </div>
 
-    <div class="reveal">
-      <div class="video-frame">
-        <iframe src="https://www.youtube-nocookie.com/embed/mFNKECTe5JU?start=308" title="Carson Keppel video editing sample" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="video-grid reveal">
+      <div class="video-col">
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/mFNKECTe5JU?start=308" title="Carson Keppel video editing sample" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">A video editing sample showing pacing, cuts, and storytelling. <a href="https://www.youtube.com/watch?v=mFNKECTe5JU&t=308s" class="accent" target="_blank" rel="noopener">Watch on YouTube &rarr;</a></p>
       </div>
-      <p class="video-caption">A video editing sample showing pacing, cuts, and storytelling. <a href="https://www.youtube.com/watch?v=mFNKECTe5JU&t=308s" class="accent" target="_blank" rel="noopener">Watch on YouTube &rarr;</a></p>
+      <div class="video-col">
+        <div class="video-frame">
+          <iframe src="https://www.youtube-nocookie.com/embed/N3k5ZRCcLZQ" title="Carson Keppel video edit" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">Another edit I put together, start to finish. <a href="https://youtu.be/N3k5ZRCcLZQ" class="accent" target="_blank" rel="noopener">Watch on YouTube &rarr;</a></p>
+      </div>
     </div>
 
     <div class="sec-head reveal" style="margin-top:90px;">
@@ -471,11 +552,27 @@
     </div>
 
     <div class="gallery">
-      <div class="card reveal" data-full="cosmic-view-records.png"><img src="cosmic-view-records.png" alt="Cosmic View Records flyer design" loading="lazy"><span class="tag">Cosmic View Records &middot; Event flyer</span></div>
+      <div class="card reveal" data-full="carson4hire.png"><img src="carson4hire.png" alt="carson4hire personal branding design" loading="lazy" style="object-position:25% center"><span class="tag">Personal Brand &middot; carson4hire</span></div>
       <div class="card reveal" data-full="before-after-photoshop.png"><img src="before-after-photoshop.png" alt="Before and after Photoshop recolor of a poster" loading="lazy"><span class="tag">Photoshop &middot; Before / after recolor</span></div>
       <div class="card reveal" data-full="instagram-post.png"><img src="instagram-post.png" alt="Promotional Instagram post design" loading="lazy"><span class="tag">Instagram &middot; Promo post</span></div>
       <div class="card reveal" data-full="cocktail-menu.png"><img src="cocktail-menu.png" alt="Cocktail menu design" loading="lazy"><span class="tag">Print &middot; Cocktail menu</span></div>
       <div class="card reveal" data-full="pride-itinerary.png"><img src="pride-itinerary.png" alt="World Pride itinerary planner design" loading="lazy"><span class="tag">Layout &middot; Itinerary planner</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IN-N-OUT / WORK ETHIC ============ -->
+<!-- IN-N-OUT PHOTO: save your In-N-Out photo as carson-candid.jpg in this folder. Until then this shows a placeholder. -->
+<section id="grind">
+  <div class="wrap">
+    <div class="innout reveal">
+      <img class="innout-photo" src="carson-candid.jpg" alt="Carson at In-N-Out" loading="lazy" onerror="this.outerHTML='&lt;div class=&quot;innout-photo photo-ph&quot;&gt;Add your In-N-Out photo here: save it as carson-candid.jpg&lt;/div&gt;'">
+      <div class="innout-text">
+        <p class="eyebrow">Where my work ethic comes from</p>
+        <h3>Three years at In-N-Out taught me how to perform under pressure.</h3>
+        <p>I worked my way up to a <strong>Level 6 cook</strong>, the position that sets the pace and quality for the entire store, earning five promotions over the course of two years. On a busy night that meant turning out upwards of 200 or more burgers in a 30-minute period, often short-staffed, without sacrificing quality. I also trained fellow associates across multiple stations, directly assisting in their promotion(s).</p>
+        <p>It also developed habits I try to carry everywhere, be it nearly perfect attendance in five years of work (both In-N-Out and my former job), a Hardest Worker Award, and a customer-service mindset of leaving people happier than they were when they came in. </p>
+      </div>
     </div>
   </div>
 </section>
@@ -490,29 +587,36 @@
     </div>
     <div class="cases-grid">
       <div class="case reveal">
+        <div class="case-bg" style="background-image:url('project-surfside.png')"></div>
         <span class="kicker">Digital Marketing</span>
         <h3>Surfside Campaign Strategy</h3>
         <p>A full digital marketing campaign for a real brand: current-state audit, influencer recommendations, budget reallocation, new email campaigns, and a platform expansion plan.</p>
         <a class="link" href="Surfside_Digital_Marketing_Campaign.pdf" target="_blank" rel="noopener">View the proposal &rarr;</a>
       </div>
       <div class="case reveal">
-        <span class="kicker">Growth &amp; Social</span>
-        <h3>Alpha Sigma Phi Growth Campaign</h3>
-        <p>Grew the chapter 50% as president by pioneering a cold-outreach recruiting strategy built on genuine connection, and directing social content that reached tens of thousands of views organically.</p>
-        <a class="link" href="#contact">Ask me about it &rarr;</a>
+        <div class="case-bg" style="background-image:url('project-cosmic-view.png')"></div>
+        <span class="kicker">Events &amp; Brand</span>
+        <h3>Cosmic View Records</h3>
+        <p>My Senior Experience project: planning a mock music festival for a real sponsor, Cosmic View Records. I was the delegated group leader and the point of contact between my team, our advisor, and the sponsor.</p>
+        <a class="link" href="Cosmic_View_Records_Presentation.pdf" target="_blank" rel="noopener">View the presentation &rarr;</a>
       </div>
       <div class="case reveal">
-        <span class="kicker">Full Portfolio</span>
-        <h3>Complete Portfolio Deck</h3>
-        <p>The full collection of my marketing and design work in one place, including projects, samples, and campaign breakdowns.</p>
-        <a class="link" href="Carson_Keppel_Portfolio.pdf" target="_blank" rel="noopener">Open the deck &rarr;</a>
+        <div class="case-bg" style="background-image:url('project-agency-proposal.png')"></div>
+        <span class="kicker">Marketing Strategy</span>
+        <h3>Agency Marketing Proposal</h3>
+        <p>A complete new-patient marketing plan I built and presented: audience and positioning research, a phased six-month rollout, a channel mix across SEO, Google Ads, and social, and a budget ramp grounded in industry data.</p>
+        <a class="link" href="Carson_Keppel_Marketing_Proposal.pdf" target="_blank" rel="noopener">View the proposal &rarr;</a>
       </div>
       <div class="case reveal">
-        <span class="kicker">Toolkit</span>
-        <h3>What I bring to a team</h3>
-        <p>Premiere Pro and Canva for content, Photoshop for design, plus HubSpot and Google Ads certifications. I'm reliable and I keep my head when things get busy, so I can start contributing right away.</p>
-        <a class="link" href="Carson_Keppel_Resume.pdf" target="_blank" rel="noopener">Download my resume &rarr;</a>
+        <div class="case-bg" style="background-image:url('project-resume.png')"></div>
+        <span class="kicker">My Resume</span>
+        <h3>See it all on one page</h3>
+        <p>Premiere Pro and Canva for content, Photoshop for design, plus HubSpot and Google Ads certifications. I'm reliable and I keep my head when things get busy. Here's the whole thing in one place.</p>
+        <a class="link" href="Carson_Keppel_Resume.pdf" target="_blank" rel="noopener">View my resume &rarr;</a>
       </div>
+    </div>
+    <div class="section-cta reveal">
+      <a href="#contact" class="btn btn-primary">Let's talk &rarr;</a>
     </div>
   </div>
 </section>
