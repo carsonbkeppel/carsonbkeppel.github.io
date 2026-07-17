@@ -15,6 +15,12 @@
 <title>Carson Keppel | Marketing & Content Creator</title>
 <meta name="description" content="Carson Keppel is a marketing graduate and content creator specializing in video editing, design, and creative campaigns that grow brands and drive engagement." />
 
+<!-- Favicon / tab + bookmark icon (CK monogram) -->
+<link rel="icon" href="favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+
 <!-- ============================================================
      EASY-EDIT NOTE FOR CARSON:
      - All files (this page, images, PDFs) live together in ONE folder,
@@ -77,8 +83,10 @@
     transition:background .35s var(--ease),padding .35s var(--ease),box-shadow .35s var(--ease);
   }
   nav.scrolled{background:rgba(28,28,28,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(245,240,228,.08);}
-  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;}
+  .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;
+    display:inline-flex;align-items:center;gap:9px;}
   .brand .dot{color:var(--yellow);}
+  .brand-logo{height:26px;width:auto;display:block;}
   .nav-links{display:flex;gap:30px;align-items:center;}
   .nav-links a{font-size:.92rem;color:var(--cream-dim);transition:color .2s;}
   .nav-links a:hover{color:var(--cream);}
@@ -259,6 +267,7 @@
   .socials svg{width:20px;height:20px;}
 
   footer{padding:34px 24px;text-align:center;color:var(--cream-dim);font-size:.86rem;border-top:1px solid rgba(245,240,228,.08);}
+  .footer-logo{height:42px;width:auto;display:block;margin:0 auto 16px;opacity:.9;}
 
   /* ---------- LIGHTBOX ---------- */
   .lightbox{position:fixed;inset:0;z-index:200;background:rgba(15,15,15,.94);display:none;align-items:center;justify-content:center;padding:30px;cursor:zoom-out;}
@@ -327,7 +336,7 @@
 
 <!-- ============ NAV ============ -->
 <nav id="nav">
-  <a href="#top" class="brand">Carson Keppel<span class="dot">.</span></a>
+  <a href="#top" class="brand"><img src="CK-logo-mark.png?v=2" alt="CK monogram logo" class="brand-logo">Carson Keppel<span class="dot">.</span></a>
   <button class="menu-toggle" aria-label="Menu" id="menuBtn">&#9776;</button>
   <div class="nav-links" id="navLinks">
     <a href="#about">About</a>
@@ -650,7 +659,8 @@
 </section>
 
 <footer>
-  &copy; <span id="year"></span> Carson Keppel &middot; Designed and built to show what I can do.
+  <img src="CK-logo-mark.png?v=2" alt="CK monogram logo" class="footer-logo">
+  <div>&copy; <span id="year"></span> Carson Keppel &middot; Designed and built to show what I can do.</div>
 </footer>
 
 <!-- ============ LIGHTBOX ============ -->
